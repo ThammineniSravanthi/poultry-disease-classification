@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Page - Poultry Detect</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 50px 20px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            width: 60%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+        .btn {
+            padding: 10px 30px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🐓 Poultry Detect</div>
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/predict">PREDICTION</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Prediction</h1>
+    <h2>Our AI model helps detect diseases from poultry images accurately and quickly.</h2>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <label for="imageUpload">Upload Your Image:</label><br><br>
+        <input type="file" name="pc_image" id="imageUpload" required><br><br>
+        <button type="submit" class="btn">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        🧪 The detected infection is: <span style="color: #00ffcc;">{{ prediction }}</span>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
